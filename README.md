@@ -40,6 +40,7 @@ Happy coding!
 
 ## Deployment
 
+## Intial project setup
 
 pip3 install django
 
@@ -54,4 +55,45 @@ python3 manage.py migrate - manage migrations
 python3 manage.py createsuperuser - create superuser to log into admin
 
 Enter username, email address & password for admin superuser account.
+
+
+## Allauth setup
+
+pip3 install django-allauth
+
+Go to: https://django-allauth.readthedocs.io/en/latest/installation.html
+
+Confirm that 'django.template.context_processors.request' has been added to the list of 'context_processors' in settings.py
+
+Add the following code beneath 'TEMPLATES' in settings.py:
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+Add the following to 'INSTALLED APPS':
+
+'django.contrib.sites',
+'allauth',
+'allauth.account',
+'allauth.socialaccount'
+
+Beneath 'AUTHENTICATION_BACKENDS' add the following code:
+
+'SITE_ID = 1'
+
+## Update urls.py file as follows:
+
+add 'include' to 'from django.urls import path, include' in urls.py file
+
+add 'path('accounts', include('allauth.urls')),' to urlpatterns:
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('accounts', include('allauth.urls')),
+]
 
