@@ -95,8 +95,9 @@ add 'include' to 'from django.urls import path, include' in urls.py file
 add 'path('accounts', include('allauth.urls')),' to urlpatterns:
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts', include('allauth.urls')),
+    path('admin/', admin.site.ur
+    ls),
+    path('accounts/', include('allauth.urls')),
 ]
 
 
