@@ -88,6 +88,8 @@ Beneath 'AUTHENTICATION_BACKENDS' add the following code:
 
 ## Update urls.py file as follows:
 
+Gives us all the urls needed for logins, logouts, password resets etc.
+
 add 'include' to 'from django.urls import path, include' in urls.py file
 
 add 'path('accounts', include('allauth.urls')),' to urlpatterns:
@@ -97,3 +99,5 @@ urlpatterns = [
     path('accounts', include('allauth.urls')),
 ]
 
+
+Run python3 manage.py migrations to update databases with new apps
